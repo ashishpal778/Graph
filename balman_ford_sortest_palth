@@ -153,42 +153,6 @@ class GraphAlgo : public Graph{
       }
     }
 
-    void Dijkstra(int src){
-      cout<<"Dijkstra algoritm";
-      priority_queue <pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>> pq;
-      pq.push(make_pair(0,src));
-
-      dist[src] = 0;
-
-
-      while(!pq.empty()){
-
-        auto current = pq.top().second;
-        pq.pop();
-        
-
-        for (auto x: getNeibour(current)){
-          
-          int newDist = dist[current]+adjMatrix[current][x];
-          
-          if (newDist<dist[x]){
-            dist[x] = newDist;
-            pq.push(make_pair(newDist,x));
-            path[x] = current;
-          }
-        }
-
-      }
-      for (int i = 0; i < n; ++i)
-      {
-        cout<<dist[i]<<",";
-      }
-
-    }
-
-
-
-
     void BellmanFord(int src){
       vector <int> q;
       q.push_back(src);
